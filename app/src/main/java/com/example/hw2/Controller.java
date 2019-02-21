@@ -47,7 +47,6 @@ public class Controller implements View.OnTouchListener, SeekBar.OnSeekBarChange
         greenValue = initGreenValue;
 
         layout = display;
-
         display.setOnTouchListener(this);
 
     }
@@ -55,6 +54,8 @@ public class Controller implements View.OnTouchListener, SeekBar.OnSeekBarChange
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+
+        //get x and y for element
         int x = (int) event.getX();
         int y = (int) event.getY();
 
@@ -104,31 +105,39 @@ public class Controller implements View.OnTouchListener, SeekBar.OnSeekBarChange
 
     }
 
-
-
-
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (layout != null) {
-            if(fromUser == true){
+    public void onProgressChanged(SeekBar seekBar, int seekBarProgress, boolean User) {
+
+        //
+            if(User){
+
                 if(seekBar == redSeekBar) {
-                    r = progress;
+
+                    r = seekBarProgress;
                     element.setColor(rgb(r, g, b));
-                    redValue.setText("" + progress);
+                    redValue.setText("" + seekBarProgress);
+
                 }
+
                 if(seekBar == blueSeekBar){
-                    b = progress;
+
+                    b = seekBarProgress;
                     element.setColor(rgb(r,g,b));
-                    blueValue.setText("" + progress);
+                    blueValue.setText("" + seekBarProgress);
+
                 }
+
                 if(seekBar == greenSeekBar){
-                    g = progress;
+
+                    g = seekBarProgress;
                     element.setColor(rgb(r,g,b));
-                    greenValue.setText("" + progress);
+                    greenValue.setText("" + seekBarProgress);
+
                 }
+
                 layout.invalidate();
             }
-        }
+
     }
 
     @Override

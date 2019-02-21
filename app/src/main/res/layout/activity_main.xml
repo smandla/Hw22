@@ -15,18 +15,27 @@
         android:orientation="horizontal"
         android:baselineAligned="false">
 
+        <TextView
+            android:id="@+id/currentElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:text="Current Element"
+            android:textColor="#000000"
+            android:textSize="25dp" />
+
         <LinearLayout
             android:id="@+id/colors"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/colorSeekBars"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_weight="2"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -73,9 +82,9 @@
                 android:id="@+id/colorTextViews"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:layout_weight="3"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/redBottomLayout"
@@ -92,7 +101,7 @@
                         android:gravity="center_horizontal|top"
                         android:text="Red"
                         android:textColor="#FF0000"
-                        android:textSize="35dp" />
+                        android:textSize="30dp" />
 
                     <TextView
                         android:id="@+id/redValue"
@@ -116,7 +125,7 @@
                         android:gravity="center_horizontal"
                         android:text="Green"
                         android:textColor="#006D00"
-                        android:textSize="35dp" />
+                        android:textSize="30dp" />
 
                     <TextView
                         android:id="@+id/greenValue"
@@ -141,7 +150,7 @@
                         android:gravity="center_horizontal"
                         android:text="Blue"
                         android:textColor="#0000FF"
-                        android:textSize="35dp" />
+                        android:textSize="30dp" />
 
                     <TextView
                         android:id="@+id/blueValue"
@@ -160,13 +169,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/currentElement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="TextView" />
 
         <com.example.hw2.mySurfaceView
             android:id="@+id/surfaceView"

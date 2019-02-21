@@ -29,12 +29,22 @@ public class mySurfaceView extends SurfaceView {
     }
 
     private void init() {
-        setWillNotDraw(false);
+
+        setWillNotDraw(true);
 
         layout = new ArrayList<CustomElement>();
 
+
+        /**
+         External Citation
+         Date:     February 18, 2019
+         Problem:  Did not know the colors to use for my shapes
+         Resource:
+         https://htmlcolorcodes.com
+         Solution: I used the hexadecimal color to help me use my colors
+         */
         //draws a red circle in the surface view
-        CustomCircle redCircle = new CustomCircle("red circle", 0xFFFF0000, 600, 600, 100);
+        CustomCircle redCircle = new CustomCircle("Red Circle", 0xFFFF0000, 600, 600, 100);
         layout.add(redCircle);
 
         //draws a teal rectangle in the surface view
@@ -45,45 +55,50 @@ public class mySurfaceView extends SurfaceView {
         CustomCircle purpleCircle = new CustomCircle("Big Purple Circle", 0xFF90098A, 800, 400, 150);
         layout.add(purpleCircle);
 
+        //draws a brown square in the surface view
         CustomRect shitSquare = new CustomRect("The Shit Square", 0xFF95590E, 300, 700, 100, 300);
         layout.add(shitSquare);
 
+        //draws a yellow circle in the surface view
         CustomCircle yellowCircle = new CustomCircle("Yellow Circle", 0xFFFFE108, 1200, 300, 200);
         layout.add(yellowCircle);
 
-        CustomCircle matchaCircle = new CustomCircle("Matcha Circle", 0xFF82C17C, 1300, 400, 100);
+        //draws a matcha green circle in the surface view
+        CustomCircle matchaCircle = new CustomCircle("Matcha Circle", 0xFF82C17C, 1300, 600, 100);
         layout.add(matchaCircle);
-        //do this six times
     }
-
-
-
-
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-
-        for(CustomElement i : layout){
-            i.drawMe(canvas);
+        //enhanced for loop to be able to access the array in the layout.
+        // Then calling the drawMe method from the CustomElement to draw the elements CustomRect and CustomCircle
+        for(CustomElement drawing : layout){
+            drawing.drawMe(canvas);
         }
-
     }
 
 
     public CustomElement findTheElement(int x, int y){
+        //Patrick Bellosil helped me implement the array List because I did not know how to implement that.
+
+        //creating an array list from CustomElement called arrayListCheck and made a new array list
         ArrayList <CustomElement> arrayListCheck = new ArrayList<CustomElement>();
 
-        for(CustomElement i: layout){
-            if(i.containsPoint(x,y)){
-                arrayListCheck.add(i);
+        /*another enhanced for loop to be able to access the array in the layout and being able to call the
+          containsPoint method from the CustomElement to draw the elements CustomRect and CustomCircle
+        */
+        for(CustomElement drawing: layout){
+            if(drawing.containsPoint(x,y)){
+                arrayListCheck.add(drawing);
             }
         }
 
+        //checking to see if element was touched or not
         CustomElement ifTouched = null;
-        for(CustomElement j : arrayListCheck){
-            if(j.containsPoint(x,y)){
-                ifTouched = j;
+        for(CustomElement drawing: arrayListCheck){
+            if(drawing.containsPoint(x,y)){
+                ifTouched = drawing;
             }
         }
         return ifTouched;
